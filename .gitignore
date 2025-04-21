@@ -54,6 +54,3 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /.vs/BusinessCardWeb
-
-# VSCode
-/.vscode

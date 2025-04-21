@@ -56,6 +56,10 @@ export default defineConfig({
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
-        }
-    }
+        },
+        sourcemap: true, // ← build 模式用
+    },
+    build: {
+        sourcemap: true, // ← build 模式用
+    },
 })
