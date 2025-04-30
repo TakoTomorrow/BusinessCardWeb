@@ -2,108 +2,23 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/BusinessCardWeb.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
+            "label": "docker-build",
+            "type": "shell",
+            "command": "docker build -t businesscardweb-server-debug .",
+            "problemMatcher": []
         },
         {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/BusinessCardWeb.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/BusinessCardWeb.sln"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "type": "docker-build",
-            "label": "docker-build: debug",
+            "label": "docker-run",
+            "type": "shell",
             "dependsOn": [
-                "build"
+                "docker-build"
             ],
-            "dockerBuild": {
-                "tag": "businesscardweb:dev",
-                "target": "base",
-                "dockerfile": "${workspaceFolder}/BusinessCardWeb.Server/Dockerfile",
-                "context": "${workspaceFolder}",
-                "pull": true
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/BusinessCardWeb.Server/BusinessCardWeb.Server.csproj"
+            "command": "docker run -d -p 5800:5800 -p 56000:56000 --name businesscardweb-server-debug --rm businesscardweb-server-debug",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
             }
-        },
-        {
-            "type": "docker-build",
-            "label": "docker-build: release",
-            "dependsOn": [
-                "build"
-            ],
-            "dockerBuild": {
-                "tag": "businesscardweb:latest",
-                "dockerfile": "${workspaceFolder}/BusinessCardWeb.Server/Dockerfile",
-                "context": "${workspaceFolder}",
-                "platform": {
-                    "os": "linux",
-                    "architecture": "amd64"
-                },
-                "pull": true
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/BusinessCardWeb.Server/BusinessCardWeb.Server.csproj"
-            }
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: debug",
-            "dependsOn": [
-                "docker-build: debug"
-            ],
-            "dockerRun": {},
-            "netCore": {
-                "appProject": "${workspaceFolder}/BusinessCardWeb.Server/BusinessCardWeb.Server.csproj",
-                "enableDebugging": true
-            }
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: release",
-            "dependsOn": [
-                "docker-build: release"
-            ],
-            "dockerRun": {},
-            "netCore": {
-                "appProject": "${workspaceFolder}/BusinessCardWeb.Server/BusinessCardWeb.Server.csproj"
-            }
-        },
-        {
-            "label": "npm: dev",
-            "type": "npm",
-            "script": "dev",
-            "path": "businesscardweb.client",
-            "isBackground": true,
-            "problemMatcher": "$msCompile"
         }
     ]
 }
