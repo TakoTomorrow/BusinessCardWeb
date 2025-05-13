@@ -2,25 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to BusinessCardWeb.Server in Docker",
+            "name": ".NET Core Launch (web)",
             "type": "coreclr",
-            "request": "attach",
-            "processId": "1",
-            "pipeTransport": {
-                "pipeProgram": "docker",
-                "pipeArgs": [
-                    "exec",
-                    "-i",
-                    "businesscardweb-server-debug"
-                ],
-                "debuggerPath": "/vsdbg/vsdbg",
-                "pipeCwd": "${workspaceFolder}",
-                "quoteArgs": true
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/BusinessCardWeb.Server/bin/Debug/net8.0/BusinessCardWeb.Server.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
-            "sourceFileMap": {
-                "/app": "${workspaceFolder}/BusinessCardWeb.Server"
-            },
-            "justMyCode": false
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
         }
     ]
 }

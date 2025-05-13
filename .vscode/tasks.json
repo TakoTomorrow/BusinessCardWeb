@@ -1,24 +1,23 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // build BusinessCardWeb.Server
         {
-            "label": "docker-build",
+            "label": "build",
             "type": "shell",
-            "command": "docker build -t businesscardweb-server-debug .",
-            "problemMatcher": []
-        },
-        {
-            "label": "docker-run",
-            "type": "shell",
-            "dependsOn": [
-                "docker-build"
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/BusinessCardWeb.Server/BusinessCardWeb.Server.csproj"
             ],
-            "command": "docker run -d -p 5800:5800 -p 56000:56000 --name businesscardweb-server-debug --rm businesscardweb-server-debug",
-            "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "detail": "Generated task by .NET Core."
         }
     ]
 }
