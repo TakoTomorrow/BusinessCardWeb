@@ -1,23 +1,18 @@
-version: '3.8'
-
+version: '3.9'
 services:
   frontend:
     build:
       context: ./businesscardweb.client
+      dockerfile: Dockerfile
     ports:
-      - "3000:80" # Host:Container
-    networks:
-      - app-network
-
+      - "8080:80"
+    depends_on:
+      - backend
   backend:
     build:
-      context: ./BusinessCardWeb.Server
+      context: . # 根目錄是 BusinessCardWeb，這樣才找得到 .csproj
+      dockerfile: BusinessCardWeb.Server/Dockerfile
     ports:
-      - "5001:5001"
-
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: nat
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
