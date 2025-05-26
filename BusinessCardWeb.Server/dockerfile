@@ -10,5 +10,11 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/publish .
+
+# 安裝必要的工具和 vsdbg
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl unzip && \
+    curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
+
 EXPOSE 5000
 ENTRYPOINT ["dotnet", "BusinessCardWeb.Server.dll"]
