@@ -9,27 +9,6 @@
             "webRoot": "${workspaceFolder}/businesscardweb.client"
         },
         {
-            "name": "Attach to .NET Core Backend",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickRemoteProcess}",
-            "pipeTransport": {
-                "pipeProgram": "docker",
-                "pipeArgs": [
-                    "exec",
-                    "-i",
-                    "businesscardweb-backend-1",
-                    "/vsdbg/vsdbg",
-                    "--interpreter=vscode"
-                ],
-                "debuggerPath": "/vsdbg/vsdbg",
-                "quoteArgs": false
-            },
-            "sourceFileMap": {
-                "/app": "${workspaceFolder}/BusinessCardWeb.Server"
-            }
-        },
-        {
             "name": "Launch .NET Core Backend",
             "type": "coreclr",
             "request": "launch",
@@ -57,6 +36,26 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/BusinessCardWeb.Server/Views"
             }
-        }
+        },
+        {
+            "name": "Attach to Backend in Docker",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "exec",
+                    "-i",
+                    "businesscardweb-backend-1"
+                ],
+                "debuggerPath": "/vsdbg/vsdbg",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/src": "${workspaceFolder}"
+            },
+            "justMyCode": false
+        },
     ]
 }
