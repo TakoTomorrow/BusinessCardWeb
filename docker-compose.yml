@@ -2,7 +2,7 @@ version: '3.9'
 services:
   frontend:
     build:
-      context: ./businesscardweb.client
+      context: ./BusinessCardWeb.Client
       dockerfile: Dockerfile
     ports:
       - "8080:80"

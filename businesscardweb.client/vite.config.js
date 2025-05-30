@@ -16,7 +16,7 @@ if (isDev) {
             ? `${env.APPDATA}/ASP.NET/https`
             : `${env.HOME}/.aspnet/https`;
 
-    const certificateName = "businesscardweb.client";
+    const certificateName = "BusinessCardWeb.Client";
     const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
     const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
 

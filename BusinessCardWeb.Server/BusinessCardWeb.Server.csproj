@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>0cb053aa-f7e1-4430-86cf-cd29e4642db5</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <SpaRoot>..\businesscardweb.client</SpaRoot>
+    <SpaRoot>..\BusinessCardWeb.Client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:57793</SpaProxyServerUrl>
   </PropertyGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <!-- <ItemGroup>
-    <ProjectReference Include="..\businesscardweb.client\businesscardweb.client.esproj">
+    <ProjectReference Include="..\BusinessCardWeb.Client\BusinessCardWeb.Client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup> -->

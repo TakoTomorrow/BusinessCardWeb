@@ -4,10 +4,10 @@ The following tools were used to generate this project:
 - create-vite
 
 The following steps were used to generate this project:
-- Create vue project with create-vite: `npm init --yes vue@latest businesscardweb.client -- --eslint `.
+- Create vue project with create-vite: `npm init --yes vue@latest BusinessCardWeb.Client -- --eslint `.
 - Update `vite.config.js` to set up proxying and certs.
 - Update `HelloWorld` component to fetch and display weather information.
-- Create project file (`businesscardweb.client.esproj`).
+- Create project file (`BusinessCardWeb.Client.esproj`).
 - Create `launch.json` to enable debugging.
 - Add project to solution.
 - Update proxy endpoint to be the backend server endpoint.
