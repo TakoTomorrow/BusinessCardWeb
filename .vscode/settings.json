@@ -1,1 +1,11 @@
-{}
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:BusinessCardWeb}/sqlite/BusinessCard.sqlite",
+            "name": "BusinessCard"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+}
