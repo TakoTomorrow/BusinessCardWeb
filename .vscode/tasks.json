@@ -1,4 +1,5 @@
 {
+    // In Windows, please choose the cmd be the default shell.
     "version": "2.0.0",
     "tasks": [
         {
