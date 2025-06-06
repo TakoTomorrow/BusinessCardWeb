@@ -5,8 +5,11 @@
             "name": "Launch Vue Frontend",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}/BusinessCardWeb.Client"
+            "url": "http://localhost:5173/vue-resume-template/",
+            "webRoot": "${workspaceFolder}/BusinessCardWeb.Client/src",
+            "sourceMaps": true,
+            "preLaunchTask": "npm-run-dev",
+            "postDebugTask": "stop-vite-site"
         },
         {
             "name": "Launch .NET Core Backend",
