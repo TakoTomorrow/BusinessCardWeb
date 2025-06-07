@@ -10,8 +10,8 @@ services:
       - backend
   backend:
     build:
-      context: . # 根目錄是 BusinessCardWeb，這樣才找得到 .csproj
-      dockerfile: BusinessCardWeb.Server/Dockerfile
+      context: ./BusinessCardWeb.Server
+      dockerfile: Dockerfile
     ports:
       - "32971:8080"
     environment:
