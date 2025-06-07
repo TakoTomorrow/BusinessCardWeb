@@ -1,9 +1,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY BusinessCardWeb.Server/BusinessCardWeb.Server.csproj BusinessCardWeb.Server/
+COPY BusinessCardWeb.Server.csproj BusinessCardWeb.Server/
 RUN dotnet restore BusinessCardWeb.Server/BusinessCardWeb.Server.csproj
-COPY . .
 WORKDIR /src/BusinessCardWeb.Server
+COPY . .
 RUN dotnet build -c Debug -o /app/build
 RUN dotnet publish -c Debug -o /app/publish
 
