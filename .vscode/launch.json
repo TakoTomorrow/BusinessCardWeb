@@ -5,7 +5,7 @@
             "name": "Launch Vue Frontend",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:5173/vue-resume-template/",
+            "url": "http://localhost:5173/",
             "webRoot": "${workspaceFolder}/BusinessCardWeb.Client/src",
             "sourceMaps": true,
             "preLaunchTask": "npm-run-dev",
