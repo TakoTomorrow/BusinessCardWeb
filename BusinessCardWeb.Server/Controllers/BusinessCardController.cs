@@ -12,26 +12,16 @@ namespace BusinessCardWeb.Server.Controllers
         private readonly ILogger<BusinessCardController> _logger;
         private readonly IBusinessCardBusinessLogic _businessCardBL;
 
-        public BusinessCardController(ILogger<BusinessCardController> logger)
+        public BusinessCardController(IBusinessCardBusinessLogic businessCardBL,ILogger<BusinessCardController> logger)
         {
+            _businessCardBL = businessCardBL;
             _logger = logger;
         }
 
         [HttpGet(Name = "GetBusinessCard")]
         public async Task<BusinessCard> Get()
         {
-            return new BusinessCard(name: "John Doe", email: "abcd@gmail.com")
-            {
-                Title = "Software Engineer",
-                PhoneNumber = "123-456-7890",
-                Address = "123 Main St, Anytown, USA",
-                SocialMedia = new Dictionary<string, string>
-                {
-                    { "LinkedIn", "https://www.linkedin.com/in/johndoe" },
-                    { "Twitter", "https://twitter.com/johndoe" },
-                    { "GitHub", "" }
-                }
-            };
+            return await _businessCardBL.GetBusinessCardAsync(1);            
         }
     }
 }

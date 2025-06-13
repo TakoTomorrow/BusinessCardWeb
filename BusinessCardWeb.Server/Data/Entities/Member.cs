@@ -39,11 +39,6 @@ public class Member
     public string Address { get; set; } = string.Empty;
 
     /// <summary>
-    /// 出生日期
-    /// </summary>
-    public DateTime DateOfBirth { get; set; }
-
-    /// <summary>
     /// 個人簡介
     /// </summary>
     public string ProfileSumarry { get; set; } = string.Empty;

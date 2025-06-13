@@ -2,7 +2,7 @@ using BusinessCardWeb.Server.BusinessLogics.Interface;
 using BusinessCardWeb.Server.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BusinessCardWeb.Server.Controllers
+namespace BusinessCardWeb.Server.BusinessLogics
 {
     public class BusinessCardBusinessLogic : IBusinessCardBusinessLogic
     {
@@ -23,7 +23,19 @@ namespace BusinessCardWeb.Server.Controllers
                 throw new ArgumentException($"User with ID {userId} not found.");
             }
 
-            return new BusinessCard(name: user.Name, email: user.Email);
+            return new BusinessCard(name: user.Name, email: user.Email)
+            {
+                Title = user.Title,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,                
+                SocialMedia = new Dictionary<string, string>
+                {
+                    { "FaceBook", user.FaceBook ?? string.Empty },
+                    { "IG", user.IG ?? string.Empty },
+                    { "LinkedIn", user.LinkedIn ?? string.Empty },
+                    { "Twitter", user.Twitter ?? string.Empty }
+                }
+            };
         }
     }
 }
