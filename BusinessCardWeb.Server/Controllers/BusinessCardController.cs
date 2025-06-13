@@ -1,3 +1,5 @@
+using BusinessCardWeb.Server.BusinessLogics.Interface;
+using BusinessCardWeb.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessCardWeb.Server.Controllers
@@ -8,6 +10,7 @@ namespace BusinessCardWeb.Server.Controllers
     {
 
         private readonly ILogger<BusinessCardController> _logger;
+        private readonly IBusinessCardBusinessLogic _businessCardBL;
 
         public BusinessCardController(ILogger<BusinessCardController> logger)
         {

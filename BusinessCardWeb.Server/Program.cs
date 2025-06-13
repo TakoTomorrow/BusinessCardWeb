@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("BusinessCardDatabase");
+
+Console.WriteLine($"Connection String: {connectionString}");
 
 // Add services to the container.
-
+builder.Services.AddDbContext<BusinessCardContext>(options =>
+    options.UseSqlite(connectionString)
+);
+    
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
