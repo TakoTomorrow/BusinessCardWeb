@@ -16,25 +16,20 @@ namespace BusinessCardWeb.Server.BusinessLogics
         // 取得名片        
         public async Task<BusinessCard> GetBusinessCardAsync(int userId)
         {
-            var user = await _db.Members.FirstOrDefaultAsync(member => member.Id == userId);
+            var user = await _db.Members
+                .Include(member => member.Locales)
+                .FirstOrDefaultAsync(member => member.Id == userId);
 
             if (user == null)
             {
                 throw new ArgumentException($"User with ID {userId} not found.");
             }
 
-            return new BusinessCard(name: user.Name, email: user.Email)
+            return new BusinessCard(name: user.Name)
             {
-                Title = user.Title,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,                
-                SocialMedia = new Dictionary<string, string>
-                {
-                    { "FaceBook", user.FaceBook ?? string.Empty },
-                    { "IG", user.IG ?? string.Empty },
-                    { "LinkedIn", user.LinkedIn ?? string.Empty },
-                    { "Twitter", user.Twitter ?? string.Empty }
-                }
+                Locales = user.Locales.ToDictionary(
+                    locale => locale.Locale,
+                    locale => new Locale(locale.Name,locale.Credits,locale.Role)),                    
             };
         }
     }

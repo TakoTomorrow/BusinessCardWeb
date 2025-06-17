@@ -66,4 +66,5 @@ public class Member
     /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    public List<MemberLocale>? Locales { get; set; }
 }

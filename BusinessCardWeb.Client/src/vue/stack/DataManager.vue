@@ -4,7 +4,6 @@
 
 <script setup>
 import {onMounted, provide, ref} from "vue"
-import axios from "axios"
 import Category from "/src/models/Category.js"
 import Locales from "/src/models/Locales.js"
 import Profile from "/src/models/Profile.js"

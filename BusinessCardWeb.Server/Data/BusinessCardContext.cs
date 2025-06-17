@@ -16,5 +16,11 @@ public class BusinessCardContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Member>().ToTable(nameof(Member));
+
+        var memberLocalBuilder = modelBuilder.Entity<MemberLocale>();
+
+        memberLocalBuilder.ToTable(nameof(MemberLocale))
+            .HasKey(ml => new { ml.MemberId, ml.Locale });
+
     }
 }
