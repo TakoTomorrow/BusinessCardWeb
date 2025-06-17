@@ -1,5 +1,6 @@
 using BusinessCardWeb.Server.BusinessLogics.Interface;
 using BusinessCardWeb.Server.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessCardWeb.Server.Controllers
@@ -19,9 +20,10 @@ namespace BusinessCardWeb.Server.Controllers
         }
 
         [HttpGet(Name = "GetBusinessCard")]
+        [EnableCors]
         public async Task<BusinessCard> Get()
         {
-            return await _businessCardBL.GetBusinessCardAsync(1);            
+            return await _businessCardBL.GetBusinessCardAsync(1);
         }
     }
 }

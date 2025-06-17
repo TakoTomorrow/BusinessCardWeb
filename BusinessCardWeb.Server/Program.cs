@@ -1,5 +1,6 @@
 using BusinessCardWeb.Server.BusinessLogics;
 using BusinessCardWeb.Server.BusinessLogics.Interface;
+using BusinessCardWeb.Server.Infrastructures;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("BusinessCardDa
 builder.Services.AddDbContext<BusinessCardContext>(options =>
     options.UseSqlite(connectionString)
 );
-
+builder.Services.AddCorsService(); // Custom CORS service
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -27,6 +28,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
