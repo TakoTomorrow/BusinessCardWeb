@@ -8,6 +8,7 @@ export default class Settings {
         this._supportedLanguages = jsonData['supportedLanguages'].map(
             ({ id, name, default: isDefault, flagUrl: flagUrl }) => new Language(id, name, isDefault, flagUrl)
         )
+        this._apiUrls = jsonData['apiUrls']
     }
 
     /** @return {Boolean} */
@@ -23,5 +24,9 @@ export default class Settings {
     /** @return {Boolean} */
     get navToggleEnabled() {
         return this._navToggleEnabled
+    }
+
+    get apiUrls() {
+        return this._apiUrls
     }
 }

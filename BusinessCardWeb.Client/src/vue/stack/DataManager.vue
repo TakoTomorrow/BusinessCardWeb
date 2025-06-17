@@ -4,12 +4,14 @@
 
 <script setup>
 import {onMounted, provide, ref} from "vue"
+import axios from "axios"
 import Category from "/src/models/Category.js"
 import Locales from "/src/models/Locales.js"
 import Profile from "/src/models/Profile.js"
 import Section from "/src/models/Section.js"
-import Settings from "/src/models/Settings.js"
+import Settings from "../../models/Settings.js"
 import {useUtils} from "/src/composables/utils.js"
+import BusinessApi from "../../models/BusinessCardApi.js"
 
 const utils = useUtils()
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -36,6 +38,7 @@ const _load = async () => {
 
     const jProfile = await _loadJson("/profile.json")
     profile.value = new Profile(jProfile)
+    await _getPortfile()
 
     const jSections = await _loadJson("/sections.json")
     const jCategories = await _loadJson("/categories.json")
@@ -112,6 +115,12 @@ const _loadJson = async (path) => {
     catch (e) {
         throw new Error(`Couldn't load ${path}. Make sure the file exists and is a valid JSON object.`)
     }
+}
+
+const _getPortfile = async () => {
+    var baseUrl = settings.value.apiUrls.find(url => url.name === "BusinessCardWeb.ServerAPI").url
+    var api = new BusinessApi(baseUrl);
+    var member = await api.getPortfile()
 }
 
 provide("categories", categories)
