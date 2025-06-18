@@ -28,6 +28,7 @@ namespace BusinessCardWeb.Server.BusinessLogics
 
             return new BusinessCard(name: user.Name)
             {
+                ProfilePictureUrl = user.PictureUrl ?? string.Empty,
                 Locales = user.Locales.ToDictionary(
                     locale => locale.Locale,
                     locale => new Locale(locale.Name, locale.Credits, locale.Role)),                    

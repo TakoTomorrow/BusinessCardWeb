@@ -35,9 +35,8 @@ const _load = async () => {
     const jStrings = await _loadJson("/strings.json")
     strings.value = new Locales(jStrings)
 
-    const jProfile = await _loadJson("/profile.json")
-    profile.value = new Profile(jProfile)
-    await _getPortfile()
+    const jProfile = await _getPortfile();
+    profile.value = new Profile(jProfile)    
 
     const jSections = await _loadJson("/sections.json")
     const jCategories = await _loadJson("/categories.json")
@@ -119,7 +118,7 @@ const _loadJson = async (path) => {
 const _getPortfile = async () => {
     var baseUrl = settings.value.apiUrls.find(url => url.name === "BusinessCardWeb.ServerAPI").url
     var api = new BusinessApi(baseUrl);
-    var member = await api.getPortfile()
+    return await api.getPortfile()
 }
 
 provide("categories", categories)
