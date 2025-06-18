@@ -1,5 +1,8 @@
 namespace BusinessCardWeb.Server.Data.Entities;
 
+/// <summary>
+/// 會員語系
+/// </summary>
 public class MemberLocale
 {
     /// <summary>

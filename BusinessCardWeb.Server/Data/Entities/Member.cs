@@ -66,5 +66,13 @@ public class Member
     /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// 語系清單
+    /// </summary>
     public List<MemberLocale>? Locales { get; set; }
+
+    /// <summary>
+    /// 聯絡方式選項清單
+    /// </summary>
+    public List<MemberContactOption>? ContactOptions { get; set; }
 }

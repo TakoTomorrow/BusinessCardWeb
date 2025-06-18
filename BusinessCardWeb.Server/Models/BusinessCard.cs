@@ -16,32 +16,7 @@ namespace BusinessCardWeb.Server.Models
         /// 大頭貼網址
         /// summary>
         public string ProfilePictureUrl { get; set; } = string.Empty;
-
-        // /// <summary>
-        // /// 電子郵件
-        // /// </summary>
-        // public string Email { get; set; } = email;
-
-        // /// <summary>
-        // /// 職位
-        // /// </summary>
-        // public string Title { get; set; } = string.Empty;
-
-        // /// <summary>
-        // /// 電話號碼
-        // /// </summary>
-        // public string PhoneNumber { get; set; } = string.Empty;
-
-        // /// <summary>
-        // /// 地址
-        // /// </summary>
-        // public string Address { get; set; } = string.Empty;
-
-        // /// <summary>
-        // /// 社群清單
-        // /// </summary>
-        // public Dictionary<string, string> SocialMedia { get; set; } = new Dictionary<string, string>();
-
+        
         /// <summary>
         /// 語系清單
         /// </summary>

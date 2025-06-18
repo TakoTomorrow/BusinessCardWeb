@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessCardWeb.Server.Migrations
 {
     [DbContext(typeof(BusinessCardContext))]
-    partial class BusinessCardContextModelSnapshot : ModelSnapshot
+    [Migration("20250618032043_CreateTableMemberContactOption")]
+    partial class CreateTableMemberContactOption
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.17");
@@ -85,7 +88,7 @@ namespace BusinessCardWeb.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Href")
-                        .HasMaxLength(200)
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
@@ -114,7 +117,7 @@ namespace BusinessCardWeb.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(200)
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Role")

@@ -18,6 +18,7 @@ namespace BusinessCardWeb.Server.BusinessLogics
         {
             var user = await _db.Members
                 .Include(member => member.Locales)
+                .Include(member => member.ContactOptions)
                 .FirstOrDefaultAsync(member => member.Id == userId);
 
             if (user == null)
@@ -29,7 +30,15 @@ namespace BusinessCardWeb.Server.BusinessLogics
             {
                 Locales = user.Locales.ToDictionary(
                     locale => locale.Locale,
-                    locale => new Locale(locale.Name,locale.Credits,locale.Role)),                    
+                    locale => new Locale(locale.Name, locale.Credits, locale.Role)),                    
+                ContactOptions = user.ContactOptions.Select(option => new ContactOption
+                {
+                    Key = option.Name,
+                    Value = option.Value,
+                    ValueShort = option.ValueShort,
+                    FaIcon = option.FaIcon,
+                    href = option.Href
+                }).ToList(),
             };
         }
     }
