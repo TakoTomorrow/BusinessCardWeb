@@ -11,7 +11,7 @@ export default class Article {
         });
     }
 
-    async getPortfile(id){
+    async getProfile(id){
         var response = await this._get("BusinessCard", id);
 
         return response.data;

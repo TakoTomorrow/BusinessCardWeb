@@ -3,17 +3,18 @@
 </template>
 
 <script setup>
-import {onMounted, provide, ref} from "vue"
+import {onMounted, provide, ref,computed} from "vue"
 import Category from "/src/models/Category.js"
 import Locales from "/src/models/Locales.js"
 import Profile from "/src/models/Profile.js"
 import Section from "/src/models/Section.js"
 import Settings from "../../models/Settings.js"
-import {useUtils} from "/src/composables/utils.js"
+import {useUtils} from "../../composables/utils.js"
 import BusinessApi from "../../models/BusinessCardApi.js"
 
 const utils = useUtils()
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+const urlParams = new URLSearchParams(window.location.search)
 
 const categories = ref(null)
 const profile = ref(null)
@@ -21,6 +22,7 @@ const sections = ref(null)
 const settings = ref(null)
 const strings = ref(null)
 const didLoadAllJsonFiles = ref(false)
+const id = urlParams.get("id") || "1"
 
 onMounted(() => {
     _load().then(() => {
@@ -115,10 +117,10 @@ const _loadJson = async (path) => {
     }
 }
 
-const _getPortfile = async () => {
-    var baseUrl = settings.value.apiUrls.find(url => url.name === "BusinessCardWeb.ServerAPI").url
-    var api = new BusinessApi(baseUrl);
-    return await api.getPortfile()
+const _getPortfile = async () => {        
+    let baseUrl = settings.value.apiUrls.find(url => url.name === "BusinessCardWeb.ServerAPI").url
+    let api = new BusinessApi(baseUrl);
+    return await api.getProfile(id)
 }
 
 provide("categories", categories)
