@@ -34,7 +34,7 @@ namespace BusinessCardWeb.Server.BusinessLogics
                     locale => new Locale(locale.Name, locale.Credits, locale.Role)),                    
                 ContactOptions = user.ContactOptions.Select(option => new ContactOption
                 {
-                    Key = option.Name,
+                    Id = option.Name,
                     Value = option.Value,
                     ValueShort = option.ValueShort,
                     FaIcon = option.FaIcon,

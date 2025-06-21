@@ -30,7 +30,7 @@ namespace BusinessCardWeb.Server.Models
 
     public class ContactOption
     {
-        public string Key { get; set; } = string.Empty;
+        public string Id { get; set; } = string.Empty;
  
         /// <summary>
         /// 內容

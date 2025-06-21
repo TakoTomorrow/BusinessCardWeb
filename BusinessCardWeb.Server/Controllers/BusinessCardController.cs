@@ -21,9 +21,21 @@ namespace BusinessCardWeb.Server.Controllers
 
         [HttpGet(Name = "GetBusinessCard")]
         [EnableCors]
-        public async Task<BusinessCard> Get()
+        public async Task<ResponseData<BusinessCard>> Get(int? id)
         {
-            return await _businessCardBL.GetBusinessCardAsync(1);
+            var response = new ResponseData<BusinessCard>();
+            try
+            {
+                response.Data = await _businessCardBL.GetBusinessCardAsync(id ?? 1);
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting business card.");
+                response.Success = false;
+                response.ErrorMessage = ex.Message;
+            }
+            return response;
         }
     }
 }
