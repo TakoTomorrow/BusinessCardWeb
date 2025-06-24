@@ -81,6 +81,10 @@ const classList = computed(() => {
     }
 }
 
+div.social-links {
+    float: right;
+}
+
 a.social-link {
     display: inline-flex;
     justify-content: center;
