@@ -6,11 +6,10 @@
 
         <InlineLinkList :items="InlineLinkListLinks"/>
 
-        <div class="items-wrapper py-2 py-lg-3">
+        <!-- <div class="items-wrapper py-2 py-lg-3">
             <ArticleProfileItem v-for="item in model.items"
                                 :item="item"/>
-        </div>
-
+        </div> -->
         <SocialLinks :items="socialLinks"
                      class="pt-lg-1"
                      size="3"
