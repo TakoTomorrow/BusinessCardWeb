@@ -1,7 +1,8 @@
 <template>
     <div v-if="didLoadAllJsonFiles" id="resume">
-        <NavigationWrapper>
-            <Section v-for="section in sections"
+        <NavigationWrapper>            
+            <component v-for="section in sections"
+                     :is="section.id=='about' ? BusinessCard : Section"
                      :presentation-mode="String(presentationMode)"
                      :model="section"
                      :active="_isSectionActive(section)"/>
@@ -11,7 +12,8 @@
 
 <script setup>
 import {inject} from "vue"
-import Section from "/src/vue/components/sections/Section.vue"
+import Section from "./../components/sections/Section.vue"
+import BusinessCard from "./../components/businesscards/BusinessCard.vue"
 import NavigationWrapper from "/src/vue/components/navigation/NavigationWrapper.vue"
 
 /** @type {{value: Boolean}} */
