@@ -8,21 +8,29 @@
                 'resume-section-cover': !model.isDefault
              }">
         <div class="resume-section-content">
-            <h1>工作title</h1>
+            <div>
+                <ul>
+                    <li>SA</li>
+                    <li>JS MVP</li>
+                    <li>高盛技術長</li>
+                </ul>
+            </div>
             <hr>
-            <h1>聯絡方式</h1>
+            <InlineLinkList :items="InlineLinkListLinks"/>
             <hr>
-            <h1>社群媒體</h1>
+            <SocialLinks :items="socialLinks"
+                     class="pt-lg-1"
+                     size="3"
+                     variant="dark"/>
         </div>
     </section>
 </template>
 
 <script setup>
-import Section from "/src/models/Section.js"
 import {computed, inject} from "vue"
 import {useConstants} from "/src/composables/constants.js"
-import SectionHeader from "/src/vue/components/sections/SectionHeader.vue"
-import SectionBody from "/src/vue/components/sections/SectionBody.vue"
+import SocialLinks from "./../widgets/SocialLinks.vue"
+import InlineLinkList from "./../widgets/InlineLinkList.vue"
 import {useUtils} from "/src/composables/utils.js"
 
 const constants = useConstants()
@@ -48,6 +56,23 @@ const visible = computed(() => {
     if(props.presentationMode === constants.PresentationModes.ALL_AT_ONCE)
         return true
     return props.active
+})
+
+/** @type {{value:Profile}} */
+const profile = inject("profile")
+
+const InlineLinkListLinks = computed(() => {
+    const contactIds = props.model.articles[0].getSetting("contact_list_ids", [])
+    return contactIds.map(contactId => {
+        return profile.value.getContactOptionWithId(contactId)
+    }).filter(contact => Boolean(contact))
+})
+
+const socialLinks = computed(() => {
+    const contactIds = props.model.articles[0].getSetting("contact_circles_ids", [])
+    return contactIds.map(contactId => {
+        return profile.value.getContactOptionWithId(contactId)
+    }).filter(contact => Boolean(contact))
 })
 </script>
 

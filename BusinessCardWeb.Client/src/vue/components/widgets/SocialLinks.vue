@@ -82,7 +82,7 @@ const classList = computed(() => {
 }
 
 div.social-links {
-    float: right;
+    text-align: right;
 }
 
 a.social-link {
