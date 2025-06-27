@@ -26,9 +26,11 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.19",
     "@vitejs/plugin-vue": "^5.2.3",
     "kill-port": "^2.0.1",
     "sass": "^1.62.1",
+    "typescript": "^5.8.3",
     "vite": "^6.2.5"
   }
 }
