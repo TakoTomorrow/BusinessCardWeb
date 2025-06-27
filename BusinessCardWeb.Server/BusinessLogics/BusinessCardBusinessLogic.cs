@@ -19,6 +19,7 @@ namespace BusinessCardWeb.Server.BusinessLogics
             var user = await _db.Members
                 .Include(member => member.Locales)
                 .Include(member => member.ContactOptions)
+                .Include(member => member.JobTitles)
                 .FirstOrDefaultAsync(member => member.Id == userId);
 
             if (user == null)
@@ -31,7 +32,7 @@ namespace BusinessCardWeb.Server.BusinessLogics
                 ProfilePictureUrl = user.PictureUrl ?? string.Empty,
                 Locales = user.Locales.ToDictionary(
                     locale => locale.Locale,
-                    locale => new Locale(locale.Name, locale.Credits, locale.Role)),                    
+                    locale => new Locale(locale.Name, locale.Credits, locale.Role)),
                 ContactOptions = user.ContactOptions.Select(option => new ContactOption
                 {
                     Id = option.Name,
@@ -40,6 +41,11 @@ namespace BusinessCardWeb.Server.BusinessLogics
                     FaIcon = option.FaIcon,
                     href = option.Href
                 }).ToList(),
+                JobTitles = user.JobTitles.Select(job => new JobTitle
+                {
+                    Value = $"{job.Company} - {job.JobTitle}",
+                    FaIcon = job.FaIcon ?? string.Empty
+                }).ToList()
             };
         }
     }

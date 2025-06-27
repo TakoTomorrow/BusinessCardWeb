@@ -16,7 +16,7 @@ namespace BusinessCardWeb.Server.Models
         /// 大頭貼網址
         /// summary>
         public string ProfilePictureUrl { get; set; } = string.Empty;
-        
+
         /// <summary>
         /// 語系清單
         /// </summary>
@@ -26,6 +26,24 @@ namespace BusinessCardWeb.Server.Models
         /// 聯絡方式選項清單
         /// </summary>
         public List<ContactOption> ContactOptions { get; set; } = new List<ContactOption>();
+        
+        /// <summary>
+        /// 職務名稱清單
+        /// </summary>
+        public List<JobTitle> JobTitles { get; set; } = new List<JobTitle>();
+    }
+
+    public class JobTitle
+    {
+        /// <summary>
+        /// 內容
+        /// </summary>
+        public string Value { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 標示
+        /// </summary>
+        public string FaIcon { get; set; } = string.Empty;
     }
 
     public class ContactOption
