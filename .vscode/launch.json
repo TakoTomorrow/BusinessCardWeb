@@ -19,11 +19,7 @@
             "program": "${workspaceFolder}/BusinessCardWeb.Server/bin/Debug/net8.0/BusinessCardWeb.Server.dll",
             "args": [],
             "cwd": "${workspaceFolder}/BusinessCardWeb.Server",
-            "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
-            },
+            "stopAtEntry": false,            
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",
@@ -31,6 +27,10 @@
                     "command": "cmd.exe",
                     "args": "/C start ${auto-detect-url}/swagger"
                 },
+                "osx": {
+                    "command": "open",
+                    "args": "${auto-detect-url}/swagger"
+                }
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
