@@ -14,7 +14,7 @@
         </li>
         <li class="inline-list-item">
             <a class="link-disabled">
-                <i class="fa fa-btc"/>
+                <i class="fa fa-dollar-sign"/>
                 <span>加密貨幣交易講師</span>
             </a>
         </li>
