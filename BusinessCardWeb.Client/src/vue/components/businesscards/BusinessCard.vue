@@ -8,16 +8,9 @@
                 'resume-section-cover': !model.isDefault
              }">
         <div class="resume-section-content">
-            <div>
-                <ul>
-                    <li>SA</li>
-                    <li>JS MVP</li>
-                    <li>高盛技術長</li>
-                </ul>
-            </div>
-            <hr>
-            <InlineLinkList :items="InlineLinkListLinks"/>
-            <hr>
+            <CompanyInfomations />            
+            <InlineLinkList v-if="InlineLinkListLinks" 
+                :items="InlineLinkListLinks"/>            
             <SocialLinks :items="socialLinks"
                      class="pt-lg-1"
                      size="3"
@@ -29,9 +22,11 @@
 <script setup>
 import {computed, inject} from "vue"
 import {useConstants} from "/src/composables/constants.js"
+import {useUtils} from "/src/composables/utils.js"
 import SocialLinks from "./../widgets/SocialLinks.vue"
 import InlineLinkList from "./../widgets/InlineLinkList.vue"
-import {useUtils} from "/src/composables/utils.js"
+import CompanyInfomations from "./CompanyInfomations.vue"
+
 
 const constants = useConstants()
 const utils = useUtils()
