@@ -1,5 +1,6 @@
 import Locales from "/src/models/Locales.js"
 import ContactOption from "/src/models/ContactOption.js"
+import JobTitle from "./JobTitle.ts"
 
 export default class Profile {
     /** @constructs */
@@ -10,6 +11,7 @@ export default class Profile {
         this._contactOptions = jsonData["contactOptions"].map(contactOptionData => {
             return new ContactOption(contactOptionData)
         })
+        this._jobTitles = jsonData["jobTitles"].map(job=> new JobTitle(job))
     }
 
     /** @return {String} */
@@ -35,5 +37,10 @@ export default class Profile {
     /** @return {Locales} */
     get locales() {
         return this._locales
+    }
+
+    /** @return {JobTitle} */
+    get jobTitles() {
+        return this._jobTitles
     }
 }

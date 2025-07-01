@@ -8,7 +8,7 @@
                 'resume-section-cover': !model.isDefault
              }">
         <div class="resume-section-content">
-            <CompanyInfomations />            
+            <CompanyInfomations :items="jobtitles"/>            
             <InlineLinkList v-if="InlineLinkListLinks" 
                 :items="InlineLinkListLinks"/>            
             <SocialLinks :items="socialLinks"
@@ -68,6 +68,10 @@ const socialLinks = computed(() => {
     return contactIds.map(contactId => {
         return profile.value.getContactOptionWithId(contactId)
     }).filter(contact => Boolean(contact))
+})
+
+const jobtitles = computed(() => {
+    return profile.value.jobTitles
 })
 </script>
 
