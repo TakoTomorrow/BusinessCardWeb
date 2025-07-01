@@ -1,4 +1,9 @@
 export default class Language {
+    _id : string
+    _name : string
+    _isDefault : boolean
+    _flagUrl : string
+
     /** @constructs */
     constructor(id, name, isDefault, flagUrl) {
         this._id = id

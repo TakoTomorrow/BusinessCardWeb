@@ -1,7 +1,16 @@
-import ArticleItem from "/src/models/ArticleItem.js"
-import Locales from "/src/models/Locales.js"
+import ArticleItem from "./ArticleItem.js"
+import Locales from "./Locales.js"
+import Section from "./Section.js"
 
 export default class Article {
+    _id : string
+    _component : string
+    _settings : string[] | null
+    _locales : Locales
+    _faIcon : string
+    _items : ArticleItem[]
+    _section : Section
+
     /** @constructs */
     constructor(data, section) {
         this._id = data.id

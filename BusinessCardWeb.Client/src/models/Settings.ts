@@ -1,6 +1,11 @@
-import Language from "/src/models/Language.js"
+import Language from "./Language.js"
 
 export default class Settings {
+    _preloaderEnabled : boolean
+    _navToggleEnabled : boolean
+    _supportedLanguages : Language[]
+    _apiUrls : string[]
+
     /** @constructs */
     constructor(jsonData) {
         this._preloaderEnabled = jsonData['preloaderEnabled']
@@ -26,6 +31,7 @@ export default class Settings {
         return this._navToggleEnabled
     }
 
+    /** @return {Array<string>} */
     get apiUrls() {
         return this._apiUrls
     }

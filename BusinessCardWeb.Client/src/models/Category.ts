@@ -1,6 +1,13 @@
-import Locales from "/src/models/Locales.js"
+import Locales from "./Locales.js"
+import Section from './Section.js';
 
 export default class Category {
+    _id : string;
+    _faIcon : string;
+    _locales : Locales;
+    _sections : Section[];
+    _lastVisitedSection : Section | null;
+    
     /** @constructs */
     constructor(id, faIcon, locales) {
         this._id = id

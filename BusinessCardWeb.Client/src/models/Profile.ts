@@ -1,8 +1,14 @@
-import Locales from "/src/models/Locales.js"
-import ContactOption from "/src/models/ContactOption.js"
-import JobTitle from "./JobTitle.ts"
+import Locales from "./Locales.js"
+import ContactOption from "./ContactOption.js"
+import JobTitle from "./JobTitle.js"
 
 export default class Profile {
+    _name : string
+    _profilePictureUrl : string
+    _locales : Locales
+    _contactOptions : ContactOption[]
+    _jobTitles : JobTitle[]
+    
     /** @constructs */
     constructor(jsonData) {
         this._name = jsonData["name"]

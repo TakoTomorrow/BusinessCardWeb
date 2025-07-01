@@ -1,6 +1,8 @@
-import axios from 'axios';
+import axios, { Axios, AxiosInstance } from 'axios';
 
 export default class Article {
+    instance : AxiosInstance;
+
     constructor(baseUrl){
         this.instance = axios.create({
             baseURL: baseUrl,

@@ -1,4 +1,6 @@
 export default class Locales {
+    _localesHash = {}
+
     /** @constructs */
     constructor(localesHash) {
         this._localesHash = localesHash['locales'] || localesHash

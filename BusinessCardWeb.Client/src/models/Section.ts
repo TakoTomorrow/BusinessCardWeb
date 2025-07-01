@@ -1,9 +1,19 @@
-import Locales from "/src/models/Locales.js"
-import Article from "/src/models/Article.js"
+import Locales from "./Locales.js"
+import Article from "./Article.js"
+import Category from "./Category.js"
 
 export default class Section {
+    _id : string
+    _faIcon : string
+    _jsonPath : string
+    _category : Category | null
+    _type : string
+    _locales : Locales
+    _isCover : boolean
+    _articles : Article[]
+
     /** @constructs */
-    constructor(id, isCover, faIcon, jsonPath, type, locales) {
+    constructor(id, isCover, faIcon, jsonPath, type, locales) {       
         this._id = id
         this._faIcon = faIcon
         this._jsonPath = jsonPath
@@ -27,17 +37,17 @@ export default class Section {
         }
     }
 
-    /** @return {String} */
+    /** @return {string} */
     get id() {
         return this._id
     }
 
-    /** @return {String} */
+    /** @return {string} */
     get faIcon() {
         return this._faIcon
     }
 
-    /** @return {String} */
+    /** @return {string} */
     get type() {
         return this._type
     }
@@ -52,12 +62,12 @@ export default class Section {
         return this._type === Section.Types.ROW || this._type === Section.Types.COLUMN
     }
 
-    /** @return {String} */
+    /** @return {string} */
     get jsonPath() {
         return this._jsonPath
     }
 
-    /** @return {String} */
+    /** @return {string} */
     get urlHashId() {
         return this.id
     }

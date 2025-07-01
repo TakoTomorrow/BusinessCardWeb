@@ -1,4 +1,10 @@
 export default class ContactOption {
+    _id : string
+    _value : string
+    _valueShort : string
+    _faIcon : string
+    _href : string | null
+
     /** @constructs */
     constructor(jsonData) {
         this._id = jsonData["id"]

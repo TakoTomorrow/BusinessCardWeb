@@ -1,6 +1,17 @@
-import Locales from "/src/models/Locales"
+import Locales from "./Locales"
 
 export default class ArticleItem {
+    _id : string
+    _img : string
+    _fallbackFaIcon : string
+    _fallbackFaIconColor : string
+    _dateStart : Date | string
+    _dateEnd : Date | string
+    _percentage : Number
+    _locales : Locales
+    _links : []
+    _category : string
+
     /** @constructs */
     constructor(data) {
         this._id = data.id
