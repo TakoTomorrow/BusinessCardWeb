@@ -4,10 +4,10 @@
 
 <script setup>
 import {onMounted, provide, ref,computed} from "vue"
-import Category from "/src/models/Category.js"
-import Locales from "/src/models/Locales.js"
-import Profile from "/src/models/Profile.js"
-import Section from "/src/models/Section.js"
+import Category from "../../models/Category.js"
+import Locales from "../../models/Locales.js"
+import Profile from "../../models/Profile.js"
+import Section from "../../models/Section.js"
 import Settings from "../../models/Settings.js"
 import {useUtils} from "../../composables/utils.js"
 import BusinessApi from "../../models/BusinessCardApi.js"

@@ -8,15 +8,15 @@
                         :include-toggle-button="false"
                         @toggle="null"/>
 
-        <LanguagePicker :shrink="true"
-                        :class="utils.isChromeOS() ? `language-picker-left` : `language-picker-right`"/>
+        <!-- <LanguagePicker :shrink="true"
+                        :class="utils.isChromeOS() ? `language-picker-left` : `language-picker-right`"/> -->
     </nav>
 </template>
 
 <script setup>
 import {inject} from "vue"
 import NavProfileCard from "/src/vue/components/navigation/layout/NavProfileCard.vue"
-import LanguagePicker from "/src/vue/components/widgets/LanguagePicker.vue"
+//import LanguagePicker from "/src/vue/components/widgets/LanguagePicker.vue"
 import {useUtils} from "/src/composables/utils.js"
 
 const utils = useUtils()
