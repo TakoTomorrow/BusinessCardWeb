@@ -18,9 +18,9 @@
     </div>
 </template>
 
-<script setup>
-import ImageView from "/src/vue/components/widgets/ImageView.vue"
-import NavToggleButton from "/src/vue/components/navigation/layout/NavToggleButton.vue"
+<script lang="ts" setup>
+import ImageView from "./../../widgets/ImageView.vue"
+import NavToggleButton from "./NavToggleButton.vue"
 
 const props = defineProps({
     shrink: Boolean,
@@ -51,7 +51,7 @@ div.nav-profile-card {
     position: relative;
 
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
-        padding: 30px;
+        padding: 10px;
     }
 }
 
@@ -65,14 +65,14 @@ div.nav-profile-card-image-view {
 
     @include media-breakpoint-down(sm) {
         --border-width: 2px;
-        --max-height: clamp(80px, 19.5vh, 110px);
+        --max-height: clamp(120px, 19.5vh, 150px);
     }
 
     min-width: calc(var(--max-height)/2);
     min-height: calc(var(--max-height)/2);
     width: var(--max-height);
     height: var(--max-height);
-    border: var(--border-width) solid $nav-avatar-border-color;
+    //border: var(--border-width) solid $nav-avatar-border-color;
     padding: 4px;
     border-radius: 50%;
 
@@ -101,7 +101,7 @@ h4.nav-profile-card-title {
     }
 
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
-        margin-top: 15px;
+        margin-top: 5px;
         font-size: 1.1rem;
     }
 

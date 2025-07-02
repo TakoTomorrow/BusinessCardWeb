@@ -1,5 +1,6 @@
 using BusinessCardWeb.Server.BusinessLogics.Interface;
 using BusinessCardWeb.Server.Models;
+using BusinessCardWeb.Server.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessCardWeb.Server.BusinessLogics
@@ -19,7 +20,8 @@ namespace BusinessCardWeb.Server.BusinessLogics
             var user = await _db.Members
                 .Include(member => member.Locales)
                 .Include(member => member.ContactOptions)
-                .Include(member => member.JobTitles)
+                .Include(member => member.JobAndServices)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(member => member.Id == userId);
 
             if (user == null)
@@ -40,11 +42,11 @@ namespace BusinessCardWeb.Server.BusinessLogics
                     ValueShort = option.ValueShort,
                     FaIcon = option.FaIcon,
                     href = option.Href
-                }).ToList(),
-                JobTitles = user.JobTitles.Select(job => new JobTitle
+                }).ToList(),                
+                JobAndServices = user.JobAndServices.Select(job => new JobAndService
                 {
-                    Value = $"{job.Company} - {job.JobTitle}",
-                    FaIcon = job.FaIcon ?? string.Empty
+                    Value = job.Description,
+                    FaIcon = job.EnumType.GetFaIcon(),
                 }).ToList()
             };
         }

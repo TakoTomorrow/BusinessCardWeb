@@ -11,9 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import JobTitle from "./../../../../src/models/JobTitle"
+import JobAndService from "../../../models/JobAndService.js"
 const props = defineProps({
-    items: Array<JobTitle>,
+    items: Array<JobAndService>,
 })
 </script>
 

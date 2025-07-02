@@ -30,10 +30,10 @@ namespace BusinessCardWeb.Server.Models
         /// <summary>
         /// 職務名稱清單
         /// </summary>
-        public List<JobTitle> JobTitles { get; set; } = new List<JobTitle>();
+        public List<JobAndService> JobAndServices { get; set; } = new List<JobAndService>();
     }
 
-    public class JobTitle
+    public class JobAndService
     {
         /// <summary>
         /// 內容

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessCardWeb.Server.Migrations
 {
     [DbContext(typeof(BusinessCardContext))]
-    partial class BusinessCardContextModelSnapshot : ModelSnapshot
+    [Migration("20250701055638_DropTable")]
+    partial class DropTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.17");
@@ -101,44 +104,6 @@ namespace BusinessCardWeb.Server.Migrations
                     b.ToTable("MemberContactOption", (string)null);
                 });
 
-            modelBuilder.Entity("BusinessCardWeb.Server.Data.Entities.MemberJobAndService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Id")
-                        .HasColumnOrder(0);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description")
-                        .HasColumnOrder(4);
-
-                    b.Property<string>("EnumType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("EnumType")
-                        .HasColumnOrder(2);
-
-                    b.Property<int>("MemberId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("MemberId")
-                        .HasColumnOrder(1);
-
-                    b.Property<int>("Sort")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Sort")
-                        .HasColumnOrder(3);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MemberId");
-
-                    b.ToTable("MemberJobAndService", (string)null);
-                });
-
             modelBuilder.Entity("BusinessCardWeb.Server.Data.Entities.MemberLocale", b =>
                 {
                     b.Property<int>("MemberId")
@@ -175,17 +140,6 @@ namespace BusinessCardWeb.Server.Migrations
                     b.Navigation("Member");
                 });
 
-            modelBuilder.Entity("BusinessCardWeb.Server.Data.Entities.MemberJobAndService", b =>
-                {
-                    b.HasOne("BusinessCardWeb.Server.Data.Entities.Member", "Member")
-                        .WithMany("JobAndServices")
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Member");
-                });
-
             modelBuilder.Entity("BusinessCardWeb.Server.Data.Entities.MemberLocale", b =>
                 {
                     b.HasOne("BusinessCardWeb.Server.Data.Entities.Member", "Member")
@@ -200,8 +154,6 @@ namespace BusinessCardWeb.Server.Migrations
             modelBuilder.Entity("BusinessCardWeb.Server.Data.Entities.Member", b =>
                 {
                     b.Navigation("ContactOptions");
-
-                    b.Navigation("JobAndServices");
 
                     b.Navigation("Locales");
                 });

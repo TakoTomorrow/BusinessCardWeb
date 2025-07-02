@@ -11,7 +11,7 @@ public class BusinessCardContext : DbContext
 
     public DbSet<MemberContactOption> MemberContactOptions { get; set; }
 
-    public DbSet<MemberJobTitle> MemberJobTitles { get; set; }
+    public DbSet<MemberJobAndService> MemberJobAndServices { get; set; }
 
     public BusinessCardContext(DbContextOptions<BusinessCardContext> options)
         : base(options)
@@ -38,19 +38,15 @@ public class BusinessCardContext : DbContext
             .IsRequired(false)
             .HasMaxLength(200);
 
-        var memberJobTitleBuilder = modelBuilder.Entity<MemberJobTitle>();
-        memberJobTitleBuilder.ToTable(nameof(MemberJobTitle))
-            .HasKey(job => job.Id);
-        memberJobTitleBuilder.Property(job => job.Id)
-            .ValueGeneratedOnAdd();
-        memberJobTitleBuilder.Property(job => job.Company)
+        var memberJobAndServiceBuilder = modelBuilder.Entity<MemberJobAndService>();
+        memberJobAndServiceBuilder.ToTable(nameof(MemberJobAndService))
+            .HasKey(mjs => mjs.Id);
+        memberJobAndServiceBuilder.Property(mjs => mjs.EnumType)
+            .IsRequired()
+            .HasConversion<string>();
+        memberJobAndServiceBuilder.Property(mjs => mjs.Description)
             .IsRequired()
             .HasMaxLength(200);
-        memberJobTitleBuilder.Property(job => job.JobTitle)
-            .IsRequired()
-            .HasMaxLength(200);
-        memberJobTitleBuilder.Property(job => job.FaIcon)
-            .IsRequired(false)
-            .HasMaxLength(100);
+
     }
 }

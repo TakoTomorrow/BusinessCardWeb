@@ -1,4 +1,4 @@
-export default class JobTitle {
+export default class JobAndService {
     _faIcon : string
     _value : string
 

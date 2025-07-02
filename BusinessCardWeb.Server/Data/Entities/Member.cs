@@ -74,10 +74,7 @@ public class Member
     /// <summary>
     /// 聯絡方式選項清單
     /// </summary>
-    public List<MemberContactOption>? ContactOptions { get; set; }
+    public List<MemberContactOption>? ContactOptions { get; set; }    
 
-    /// <summary>
-    /// 工作職務清單
-    /// </summary>
-    public List<MemberJobTitle>? JobTitles { get; set; }
+    public List<MemberJobAndService>? JobAndServices { get; set; }
 }

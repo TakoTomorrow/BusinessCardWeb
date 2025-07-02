@@ -1,13 +1,13 @@
 import Locales from "./Locales.js"
 import ContactOption from "./ContactOption.js"
-import JobTitle from "./JobTitle.js"
+import JobAndService from "./JobAndService.js"
 
 export default class Profile {
     _name : string
     _profilePictureUrl : string
     _locales : Locales
     _contactOptions : ContactOption[]
-    _jobTitles : JobTitle[]
+    _jobAndServices : JobAndService[]
     
     /** @constructs */
     constructor(jsonData) {
@@ -17,7 +17,7 @@ export default class Profile {
         this._contactOptions = jsonData["contactOptions"].map(contactOptionData => {
             return new ContactOption(contactOptionData)
         })
-        this._jobTitles = jsonData["jobTitles"].map(job=> new JobTitle(job))
+        this._jobAndServices = jsonData["jobAndServices"].map(job=> new JobAndService(job))
     }
 
     /** @return {String} */
@@ -45,8 +45,8 @@ export default class Profile {
         return this._locales
     }
 
-    /** @return {JobTitle} */
-    get jobTitles() {
-        return this._jobTitles
+    /** @return {JobAndService} */
+    get jobAndServices() {
+        return this._jobAndServices
     }
 }

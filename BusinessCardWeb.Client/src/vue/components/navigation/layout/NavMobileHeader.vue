@@ -1,12 +1,8 @@
 <template>
-    <nav class="nav-mobile-header"
-         id="nav-mobile-header">
+    <nav class="nav-mobile-header" id="nav-mobile-header">
         <NavProfileCard :avatar="profile.profilePictureUrl"
-                        :name="localize(profile.locales, 'name', true) || profile.name"
-                        :role="localize(profile.locales, 'role')"
-                        :shrink="false"
-                        :include-toggle-button="false"
-                        @toggle="null"/>
+            :name="localize(profile.locales, 'name', true) || profile.name" :role="localize(profile.locales, 'role')"
+            :shrink="false" :include-toggle-button="false" @toggle="null" />
 
         <!-- <LanguagePicker :shrink="true"
                         :class="utils.isChromeOS() ? `language-picker-left` : `language-picker-right`"/> -->
@@ -14,10 +10,10 @@
 </template>
 
 <script setup>
-import {inject} from "vue"
+import { inject } from "vue"
 import NavProfileCard from "/src/vue/components/navigation/layout/NavProfileCard.vue"
 //import LanguagePicker from "/src/vue/components/widgets/LanguagePicker.vue"
-import {useUtils} from "/src/composables/utils.js"
+import { useUtils } from "/src/composables/utils.js"
 
 const utils = useUtils()
 
@@ -33,11 +29,16 @@ const localize = inject("localize")
 
 nav.nav-mobile-header {
     background-color: $nav-background;
+
     @include media-breakpoint-up($navigation-sidebar-breakpoint) {
         display: none;
     }
-
     position: relative;
+
+    background-image: url("/public/images/pictures/ASML.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;    
 }
 
 div.language-picker {

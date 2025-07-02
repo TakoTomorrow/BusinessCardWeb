@@ -71,7 +71,7 @@ const socialLinks = computed(() => {
 })
 
 const jobtitles = computed(() => {
-    return profile.value.jobTitles
+    return profile.value.jobAndServices
 })
 </script>
 

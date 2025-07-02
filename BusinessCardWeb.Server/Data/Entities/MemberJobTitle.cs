@@ -1,41 +1,43 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BusinessCardWeb.Server.Models.Enums;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BusinessCardWeb.Server.Data.Entities;
 
 /// <summary>
-/// 會員語系
+/// 會員工作與服務
 /// </summary>
-public class MemberJobTitle
+public class MemberJobAndService
 {
     [Key]
-    [Column("Id", Order = 0)]
+    [Column(nameof(MemberJobAndService.Id), Order = 0)]
     public int Id { get; set; } 
 
     /// <summary>
     /// 會員編號
     /// </summary>
-    [Column("MemberId", Order = 1)]
+    [Column(nameof(MemberJobAndService.MemberId), Order = 1)]
     public int MemberId { get; set; }
 
     /// <summary>
-    /// 公司名稱
+    /// 分類
     /// </summary>
-    [Column("Company", Order = 2)]
-    public string Company { get; set; } = string.Empty;
-
+    [Column(nameof(MemberJobAndService.EnumType), Order = 2, TypeName = "nvarchar(50)")]
+    public JobAndServiceEnum EnumType { get; set; } = JobAndServiceEnum.Company;
+    
     /// <summary>
-    /// 職務名稱
+    /// 排序
     /// </summary>
-    [Column("JobTitle", Order = 3)]
-    public string JobTitle { get; set; } = string.Empty;
+    [Column(nameof(MemberJobAndService.Sort), Order = 3)]
+    public int Sort { get; set; } 
 
      /// <summary>
-    /// 標示
+    /// 內容描述標示
     /// </summary>
-     [Column("FaIcon", Order = 4)]
-    public string FaIcon { get; set; } = string.Empty;
+    [Column(nameof(MemberJobAndService.Description), Order = 4)]
+    public string Description { get; set; } = string.Empty;
 
     public Member? Member { get; set; }
 }
