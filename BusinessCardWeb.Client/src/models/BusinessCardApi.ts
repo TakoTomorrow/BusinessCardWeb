@@ -1,6 +1,6 @@
 import axios, { Axios, AxiosInstance } from 'axios';
 
-export default class Article {
+export default class  BusinessCardApi {
     instance : AxiosInstance;
 
     constructor(baseUrl){
