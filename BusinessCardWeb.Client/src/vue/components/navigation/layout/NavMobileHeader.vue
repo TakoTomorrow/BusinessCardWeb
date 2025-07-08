@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav-mobile-header" id="nav-mobile-header">
+    <nav class="nav-mobile-header" id="nav-mobile-header">        
         <NavProfileCard :avatar="profile.profilePictureUrl"
             :name="localize(profile.locales, 'name', true) || profile.name" :role="localize(profile.locales, 'role')"
             :shrink="false" :include-toggle-button="false" @toggle="null" />
@@ -11,7 +11,7 @@
 
 <script setup>
 import { inject } from "vue"
-import NavProfileCard from "/src/vue/components/navigation/layout/NavProfileCard.vue"
+import NavProfileCard from "./NavProfileCard.vue"
 //import LanguagePicker from "/src/vue/components/widgets/LanguagePicker.vue"
 import { useUtils } from "/src/composables/utils.js"
 
@@ -34,8 +34,6 @@ nav.nav-mobile-header {
         display: none;
     }
     position: relative;
-
-    background-image: url("/public/images/pictures/ASML.png");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;    

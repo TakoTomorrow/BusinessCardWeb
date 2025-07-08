@@ -1,5 +1,6 @@
 <template>
     <div class="nav-profile-card" :class="{'nav-profile-card-shrink': shrink}">
+        <img class="logo" src="/public/images/pictures/ASML.png" alt="ASML Logo" />
         <ImageView :src="avatar"
                    :alt="name"
                    :resolve-path="true"
@@ -50,10 +51,18 @@ div.nav-profile-card {
     justify-content: center;
     padding: 20px;
     color: $nav-contrast;
-    position: relative;
-
+    position: relative;    
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
         padding: 10px;
+        height: clamp(200px,30.3vh,450px);
+    }
+
+    img.logo {
+        @include media-breakpoint-up(sm) {
+            display: none;
+        }
+        position: absolute;
+        top: 0px
     }
 }
 
@@ -68,6 +77,9 @@ div.nav-profile-card-image-view {
     @include media-breakpoint-down(sm) {
         --border-width: 2px;
         --max-height: clamp(120px, 19.5vh, 150px);
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
     }
 
     min-width: calc(var(--max-height)/2);
@@ -109,6 +121,8 @@ h4.nav-profile-card-title {
 
     @include media-breakpoint-down(sm) {
         font-size: 1.05rem;
+        position: absolute;
+        bottom: 10px;
     }
 }
 
@@ -128,6 +142,7 @@ h6.nav-profile-card-role {
 
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
         font-size: 0.95rem;
+        display: none;
     }
 
     @include media-breakpoint-down(sm) {
