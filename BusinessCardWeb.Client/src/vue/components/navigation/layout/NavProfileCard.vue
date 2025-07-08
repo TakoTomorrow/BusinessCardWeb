@@ -15,12 +15,14 @@
         <NavToggleButton v-if="includeToggleButton"
                          :toggled="shrink"
                          @click="_onToggleButton"/>
+        <ShareButton />
     </div>
 </template>
 
 <script lang="ts" setup>
 import ImageView from "./../../widgets/ImageView.vue"
 import NavToggleButton from "./NavToggleButton.vue"
+import ShareButton from "./../../widgets/ShareButton.vue"
 
 const props = defineProps({
     shrink: Boolean,
