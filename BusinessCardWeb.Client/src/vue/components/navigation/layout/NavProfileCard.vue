@@ -8,15 +8,17 @@
                    image-class="rounded-circle"/>
 
         <h4 class="nav-profile-card-title"
+            v-if="includeToggleButton"
             v-html="name"/>
 
         <h6 class="nav-profile-card-role"
+            v-if="includeToggleButton"
             v-html="role"/>
 
         <NavToggleButton v-if="includeToggleButton"
                          :toggled="shrink"
                          @click="_onToggleButton"/>
-        <ShareButton />
+        <ShareButton v-if="!includeToggleButton"/>
     </div>
 </template>
 
@@ -54,7 +56,7 @@ div.nav-profile-card {
     position: relative;    
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
         padding: 10px;
-        height: clamp(200px,30.3vh,450px);
+        height: clamp(170px,30.3vh,200px);
     }
 
     img.logo {
@@ -142,7 +144,6 @@ h6.nav-profile-card-role {
 
     @include media-breakpoint-down($navigation-sidebar-breakpoint) {
         font-size: 0.95rem;
-        display: none;
     }
 
     @include media-breakpoint-down(sm) {

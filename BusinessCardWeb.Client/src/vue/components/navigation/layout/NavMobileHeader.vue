@@ -6,6 +6,10 @@
 
         <!-- <LanguagePicker :shrink="true"
                         :class="utils.isChromeOS() ? `language-picker-left` : `language-picker-right`"/> -->
+
+        <div>
+            <h3 class="nav-mobile-header-client-name">{{localize(profile.locales, 'name', true) || profile.name}}</h3>
+        </div>
     </nav>
 </template>
 
@@ -28,7 +32,7 @@ const localize = inject("localize")
 @import "/src/scss/_theming.scss";
 
 nav.nav-mobile-header {
-    background-color: $nav-background;
+    //background-color: $nav-background;
 
     @include media-breakpoint-up($navigation-sidebar-breakpoint) {
         display: none;
@@ -48,5 +52,9 @@ div.language-picker {
         left: 5px;
         right: auto;
     }
+}
+
+h3.nav-mobile-header-client-name {
+    margin-left: 10px;
 }
 </style>
