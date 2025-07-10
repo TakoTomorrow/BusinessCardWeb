@@ -37,9 +37,9 @@
                 <slot/>
             </div>
 
-            <NavTabController   v-if="controls.tabControllerOptions"
+            <!-- <NavTabController   v-if="controls.tabControllerOptions"
                                 :options="controls.tabControllerOptions"
-                                @select="_onTabControllerLinkClicked"/>
+                                @select="_onTabControllerLinkClicked"/> -->
         </div>
     </div>
 </template>
