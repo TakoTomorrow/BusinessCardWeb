@@ -31,9 +31,6 @@ import CompanyInfomations from "./CompanyInfomations.vue"
 const constants = useConstants()
 const utils = useUtils()
 
-/** @type {{value:Boolean}} */
-const isMobileLayout = inject("isMobileLayout")
-
 const props = defineProps({
     /** @type {Section} **/
     model: {

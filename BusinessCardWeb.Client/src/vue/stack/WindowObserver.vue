@@ -53,8 +53,12 @@ const isDesktopLayout = computed(() => {
     return windowWidth.value > constants.BOOTSTRAP_BREAKPOINTS.lg
 })
 
+const isMobileDevice = computed(() => {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+})
+
 const isMobileLayout = computed(() => {
-    return !isDesktopLayout.value
+    return !isDesktopLayout.value || isMobileDevice.value
 })
 
 const isScreenXlOrLarger = computed(() => {

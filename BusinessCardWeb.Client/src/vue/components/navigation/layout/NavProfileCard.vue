@@ -18,14 +18,21 @@
         <NavToggleButton v-if="includeToggleButton"
                          :toggled="shrink"
                          @click="_onToggleButton"/>
-        <ShareButton v-if="!includeToggleButton"/>
+        <div class="nav-profile-card-btns"
+            v-if="isMobileLayout">            
+            <FaLiteralButton faIcon="fa fa-share-alt"
+                        btnStyle="primary"
+                        :literal = "isMobileLayout ? '分享連結':'複製連結'"
+                        :on-clieck-event="shareUrl"/>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import ImageView from "./../../widgets/ImageView.vue"
 import NavToggleButton from "./NavToggleButton.vue"
-import ShareButton from "./../../widgets/ShareButton.vue"
+import FaLiteralButton from "./../../widgets/FaLiteralButton.vue"
+import {inject} from "vue"
 
 const props = defineProps({
     shrink: Boolean,
@@ -35,10 +42,39 @@ const props = defineProps({
     includeToggleButton: Boolean
 })
 
+const isMobileLayout:boolean = inject("isMobileLayout")
+const urlToShare:string = window.location.href
+
 const emit = defineEmits(['toggle'])
 
 const _onToggleButton = () => {
     emit('toggle')
+}
+
+const shareUrl = () => {    
+    if(isMobileLayout){
+        navigator.share({
+            title: "測試標題",
+            text: "分享我的名片",
+            url: urlToShare
+        })        
+        .catch(err  => {
+            if(err.name != "AbortError"){
+                console.error("無法分享連結", err)
+                alert("無法分享連結")
+            }        
+        })
+    }
+    else{
+        navigator.clipboard.writeText(urlToShare)
+        .then(() => {
+            alert("已複製連結到剪貼簿")
+        })
+        .catch(err => {
+            console.error("無法複製連結到剪貼簿", err)
+            alert("無法複製連結到剪貼簿")
+        })
+    }    
 }
 </script>
 
@@ -176,6 +212,19 @@ div.nav-profile-card-shrink {
         position: absolute;
         top: 80px;
         left: 80px;
+    }
+}
+
+div.nav-profile-card-btns {
+    position: absolute;
+    right: clamp(0px, 5vw, 10px);
+    bottom: clamp(0px, 5vw, 10px);
+    i {
+        margin-right: 5px;
+    }
+
+    .btn{
+        margin-left: 10px;
     }
 }
 </style>
