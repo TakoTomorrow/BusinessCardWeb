@@ -19,11 +19,15 @@
                          :toggled="shrink"
                          @click="_onToggleButton"/>
         <div class="nav-profile-card-btns"
-            v-if="isMobileLayout">            
+            v-if="isMobileLayout">          
+            <FaLiteralButton faIcon="fa fa-qrcode"
+                        btnStyle="primary"
+                        literal=""                        
+                        :on-clieck-event="_showQrcode"/>  
             <FaLiteralButton faIcon="fa fa-share-alt"
                         btnStyle="primary"
                         :literal = "isMobileLayout ? '分享連結':'複製連結'"
-                        :on-clieck-event="shareUrl"/>
+                        :on-clieck-event="_shareUrl"/>
         </div>
     </div>
 </template>
@@ -33,6 +37,7 @@ import ImageView from "./../../widgets/ImageView.vue"
 import NavToggleButton from "./NavToggleButton.vue"
 import FaLiteralButton from "./../../widgets/FaLiteralButton.vue"
 import {inject} from "vue"
+import QRCodeVue3 from "qrcode-vue3"
 
 const props = defineProps({
     shrink: Boolean,
@@ -43,6 +48,7 @@ const props = defineProps({
 })
 
 const isMobileLayout:boolean = inject("isMobileLayout")
+const showCommonModal:(item : any)=>void =inject("showCommonModal")
 const urlToShare:string = window.location.href
 
 const emit = defineEmits(['toggle'])
@@ -51,7 +57,7 @@ const _onToggleButton = () => {
     emit('toggle')
 }
 
-const shareUrl = () => {    
+const _shareUrl = () => {    
     if(isMobileLayout){
         navigator.share({
             title: "測試標題",
@@ -75,6 +81,10 @@ const shareUrl = () => {
             alert("無法複製連結到剪貼簿")
         })
     }    
+}
+
+const _showQrcode = () => {
+    showCommonModal({component : QRCodeVue3, comment : urlToShare});
 }
 </script>
 
