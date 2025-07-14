@@ -10,7 +10,7 @@ import Profile from "../../models/Profile.js"
 import Section from "../../models/Section.js"
 import Settings from "../../models/Settings.js"
 import {useUtils} from "../../composables/utils.js"
-import BusinessApi from "../../models/BusinessCardApi.js"
+import BusinessApi from "../../composables/BusinessCardApi.js"
 
 const utils = useUtils()
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
